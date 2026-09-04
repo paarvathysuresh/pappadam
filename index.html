@@ -1,0 +1,4648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Pappadam Crush-o-Matic 3000</title>
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+:root{
+
+  --leaf-dark:#2F5233;
+  --leaf:#5B8C4A;
+  --leaf-light:#8FBB6E;
+
+  --cream:#FBF3DE;
+  --cream-2:#F3E7C4;
+
+  --pappadam:#E8C878;
+  --pappadam-spot:#C79A4B;
+  --pappadam-dark:#A97A34;
+
+  --vermillion:#B4432E;
+  --brown:#3A2418;
+
+  --gold:#D9A441;
+
+}
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+
+  margin:0;
+  padding:0;
+
+  width:100%;
+  height:100%;
+
+  overflow:hidden;
+
+  background:var(--cream);
+
+  color:var(--brown);
+
+  font-family:'Inter',sans-serif;
+
+}
+
+button{
+  font-family:inherit;
+}
+
+
+/* =====================================================
+   SCREEN SYSTEM
+===================================================== */
+
+.screen{
+
+  position:fixed;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:
+    opacity .5s ease;
+
+}
+
+.screen.active{
+
+  opacity:1;
+
+  pointer-events:auto;
+
+}
+
+
+/* =====================================================
+   PAGE 1
+===================================================== */
+
+#screen-intro{
+
+  flex-direction:column;
+
+  text-align:center;
+
+  padding:30px;
+
+  background:
+
+    radial-gradient(
+      ellipse at 50% -10%,
+      #fffaf0 0%,
+      var(--cream) 60%
+    );
+
+}
+
+.eyebrow{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:var(--vermillion);
+
+  margin-bottom:10px;
+
+}
+
+.intro-leaf{
+
+  width:min(430px,80vw);
+
+  filter:
+
+    drop-shadow(
+      0 18px 22px
+      rgba(58,36,24,.18)
+    );
+
+}
+
+.intro-leaf svg{
+
+  width:100%;
+
+  height:auto;
+
+}
+
+.pappadam-idle{
+
+  transform-origin:320px 210px;
+
+  animation:
+
+    idle-wobble
+    3.4s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes idle-wobble{
+
+  0%,100%{
+
+    transform:
+      rotate(-3deg)
+      translateY(0);
+
+  }
+
+  50%{
+
+    transform:
+      rotate(3deg)
+      translateY(-3px);
+
+  }
+
+}
+
+.headline{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:
+    clamp(28px,5vw,42px);
+
+  color:var(--leaf-dark);
+
+  margin:10px 0 5px;
+
+  line-height:1.1;
+
+}
+
+.tagline{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-style:italic;
+
+  color:#8a6a3a;
+
+  margin:0 0 10px;
+
+}
+
+.subhead{
+
+  max-width:520px;
+
+  line-height:1.5;
+
+  color:#5c4a3a;
+
+  margin:0 0 25px;
+
+}
+
+
+/* =====================================================
+   MAIN BUTTON
+===================================================== */
+
+.main-btn{
+
+  border:none;
+
+  cursor:pointer;
+
+  background:var(--leaf-dark);
+
+  color:var(--cream);
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  padding:15px 32px;
+
+  border-radius:999px 999px 999px 6px;
+
+  box-shadow:
+
+    0 6px 0 #1e3a24,
+
+    0 10px 18px
+    rgba(0,0,0,.18);
+
+  transition:.15s;
+
+}
+
+.main-btn:hover{
+
+  transform:translateY(-2px);
+
+}
+
+.main-btn:active{
+
+  transform:translateY(4px);
+
+}
+
+
+/* =====================================================
+   PAGE 2 - SADYA
+===================================================== */
+
+#screen-sadya{
+
+  flex-direction:column;
+
+  background:
+
+    radial-gradient(
+      ellipse at 50% 15%,
+      #f5ecd0 0%,
+      var(--cream-2) 70%
+    );
+
+  padding:10px;
+
+}
+
+.sadya-title{
+
+  font-family:'Baloo 2',sans-serif;
+
+  color:var(--leaf-dark);
+
+  font-size:
+    clamp(22px,4vw,32px);
+
+  margin:
+    8px 0 0;
+
+}
+
+.sadya-subtitle{
+
+  margin:0 0 3px;
+
+  color:#7b6247;
+
+  font-size:14px;
+
+}
+
+.question{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:
+    clamp(20px,4vw,29px);
+
+  font-weight:700;
+
+  color:var(--vermillion);
+
+  margin:3px 0 3px;
+
+  min-height:38px;
+
+}
+
+
+/* =====================================================
+   LEAF STAGE
+===================================================== */
+
+.leaf-stage{
+
+  position:relative;
+
+  width:min(620px,94vw);
+
+  height:min(430px,61vh);
+
+}
+
+#sadya-svg{
+
+  width:100%;
+
+  height:100%;
+
+  display:block;
+
+}
+
+
+/* =====================================================
+   FOOD ANIMATION
+===================================================== */
+
+.food{
+
+  opacity:0;
+
+  transform:
+    scale(.25);
+
+  transform-origin:center;
+
+  transition:
+
+    opacity .45s ease,
+
+    transform
+    .45s
+    cubic-bezier(.2,.8,.3,1);
+
+}
+
+.food.visible{
+
+  opacity:1;
+
+  transform:scale(1);
+
+}
+
+
+/* =====================================================
+   PAPPADAM ON RICE
+===================================================== */
+
+#food-pappadam{
+
+  transform-origin:
+    300px 215px;
+
+}
+
+#food-pappadam.visible{
+
+  animation:
+
+    pappadam-land
+    .55s
+    cubic-bezier(.2,.8,.3,1);
+
+}
+
+@keyframes pappadam-land{
+
+  0%{
+
+    opacity:0;
+
+    transform:
+      translateY(-35px)
+      scale(.5)
+      rotate(-15deg);
+
+  }
+
+  70%{
+
+    transform:
+      translateY(4px)
+      scale(1.05)
+      rotate(4deg);
+
+  }
+
+  100%{
+
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(0);
+
+  }
+
+}
+
+
+/* =====================================================
+   CHOICE BUTTONS
+===================================================== */
+
+.choice-row{
+
+  display:flex;
+
+  gap:15px;
+
+  margin-top:2px;
+
+  justify-content:center;
+
+}
+
+.choice-btn{
+
+  border:none;
+
+  cursor:pointer;
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:17px;
+
+  font-weight:700;
+
+  padding:10px 30px;
+
+  border-radius:999px;
+
+  transition:.15s;
+
+}
+
+.yes-btn{
+
+  background:var(--leaf-dark);
+
+  color:white;
+
+  box-shadow:
+    0 4px 0 #1e3a24;
+
+}
+
+.no-btn{
+
+  background:#fff7e4;
+
+  color:var(--vermillion);
+
+  border:
+    2px solid
+    var(--vermillion);
+
+}
+
+.choice-btn:hover{
+
+  transform:translateY(-2px);
+
+}
+
+.choice-btn:active{
+
+  transform:translateY(3px);
+
+}
+
+.serve-status{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:15px;
+
+  color:#806644;
+
+  min-height:22px;
+
+  margin:1px 0;
+
+}
+
+
+/* =====================================================
+   PAGE 3 - CRUSH
+===================================================== */
+
+#screen-crush{
+
+  flex-direction:column;
+
+  background:
+
+    radial-gradient(
+      ellipse at 50% 15%,
+      #f5ecd0 0%,
+      var(--cream-2) 60%
+    );
+
+  overflow:auto;
+
+  padding:15px 10px;
+
+}
+
+.crush-topbar{
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  right:0;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  padding:15px 20px;
+
+  font-family:'Baloo 2',sans-serif;
+
+}
+
+.back-link{
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
+
+  color:var(--leaf-dark);
+
+  font-size:15px;
+
+  font-weight:600;
+
+}
+
+.top-right{
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:center;
+
+}
+
+.counter-pill{
+
+  background:var(--leaf-dark);
+
+  color:var(--cream);
+
+  padding:7px 14px;
+
+  border-radius:999px;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  box-shadow:
+    0 3px 0 #1e3a24;
+
+}
+
+.sound-toggle{
+
+  width:34px;
+
+  height:34px;
+
+  border-radius:50%;
+
+  border:
+    2px solid
+    var(--leaf-dark);
+
+  background:var(--cream);
+
+  cursor:pointer;
+
+  font-size:15px;
+
+}
+
+
+/* =====================================================
+   CRUSH TITLE
+===================================================== */
+
+.crush-title{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:
+    clamp(24px,5vw,34px);
+
+  color:var(--leaf-dark);
+
+  margin:
+
+    45px 0 0;
+
+}
+
+.crush-subtitle{
+
+  margin:0;
+
+  color:#806644;
+
+  font-size:14px;
+
+}
+
+.crush-instruction{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:
+    clamp(17px,3vw,23px);
+
+  color:var(--vermillion);
+
+  font-weight:700;
+
+  margin:5px 0;
+
+}
+
+
+/* =====================================================
+   CRUSH OPTIONS
+===================================================== */
+
+.crush-options{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:7px;
+
+  max-width:720px;
+
+  padding:0 8px;
+
+  margin:4px auto;
+
+}
+
+.crush-option{
+
+  border:
+    2px solid
+    var(--leaf-dark);
+
+  background:#fff8e6;
+
+  color:var(--leaf-dark);
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  padding:7px 13px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  transition:.15s;
+
+}
+
+.crush-option:hover{
+
+  transform:translateY(-2px);
+
+}
+
+.crush-option.active{
+
+  background:var(--leaf-dark);
+
+  color:white;
+
+  box-shadow:
+    0 3px 0 #1e3a24;
+
+}
+
+.crush-option:active{
+
+  transform:translateY(2px);
+
+}
+
+.crush-options.disabled{
+
+  opacity:.5;
+
+  pointer-events:none;
+
+}
+
+
+/* =====================================================
+   CRUSH STAGE
+===================================================== */
+
+.crush-stage{
+
+  position:relative;
+
+  width:min(380px,82vw);
+
+  height:min(330px,48vh);
+
+  margin-top:2px;
+
+}
+
+#scene-svg{
+
+  width:100%;
+
+  height:100%;
+
+  display:block;
+
+}
+
+
+/* =====================================================
+   PAPPADAM
+===================================================== */
+
+#pappadam-group{
+
+  cursor:pointer;
+
+  transform-origin:
+    200px 205px;
+
+  transition:
+    transform .15s ease;
+
+}
+
+
+/* GENTLE */
+
+#pappadam-group.mode-tap{
+
+  filter:
+    drop-shadow(
+      0 3px 3px
+      rgba(58,36,24,.15)
+    );
+
+}
+
+
+/* HARD */
+
+#pappadam-group.mode-hard{
+
+  filter:
+    drop-shadow(
+      0 6px 4px
+      rgba(58,36,24,.25)
+    );
+
+}
+
+
+/* TWIST */
+
+#pappadam-group.mode-twist{
+
+  filter:
+    drop-shadow(
+      0 4px 5px
+      rgba(58,36,24,.2)
+    );
+
+}
+
+
+/* FULL */
+
+#pappadam-group.mode-full{
+
+  filter:
+    drop-shadow(
+      0 7px 5px
+      rgba(58,36,24,.3)
+    );
+
+}
+
+
+/* ANGRY */
+
+#pappadam-group.mode-angry{
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(180,67,46,.4)
+    );
+
+}
+
+
+/* =====================================================
+   CRUSH ANIMATIONS
+===================================================== */
+
+#pappadam-group.shake{
+
+  animation:
+    crunch-shake
+    .16s
+    ease;
+
+}
+
+#pappadam-group.mode-hard.shake{
+
+  animation:
+    hard-shake
+    .22s
+    ease;
+
+}
+
+#pappadam-group.mode-twist.shake{
+
+  animation:
+    twist-shake
+    .32s
+    ease;
+
+}
+
+#pappadam-group.mode-angry.shake{
+
+  animation:
+    angry-shake
+    .25s
+    ease;
+
+}
+
+@keyframes crunch-shake{
+
+  0%{
+    transform:
+      rotate(0)
+      scale(1);
+  }
+
+  35%{
+    transform:
+      rotate(-4deg)
+      scale(.97);
+  }
+
+  70%{
+    transform:
+      rotate(3deg)
+      scale(.98);
+  }
+
+  100%{
+    transform:
+      rotate(0)
+      scale(1);
+  }
+
+}
+
+@keyframes hard-shake{
+
+  0%{
+    transform:
+      translateX(0)
+      scale(1);
+  }
+
+  20%{
+    transform:
+      translateX(-8px)
+      rotate(-5deg)
+      scale(.94);
+  }
+
+  40%{
+    transform:
+      translateX(8px)
+      rotate(5deg)
+      scale(.92);
+  }
+
+  60%{
+    transform:
+      translateX(-6px)
+      rotate(-4deg)
+      scale(.95);
+  }
+
+  80%{
+    transform:
+      translateX(5px)
+      rotate(3deg)
+      scale(.96);
+  }
+
+  100%{
+    transform:
+      translateX(0)
+      rotate(0)
+      scale(1);
+  }
+
+}
+
+@keyframes twist-shake{
+
+  0%{
+    transform:
+      rotate(0)
+      scale(1);
+  }
+
+  25%{
+    transform:
+      rotate(-12deg)
+      scale(.96);
+  }
+
+  50%{
+    transform:
+      rotate(12deg)
+      scale(.94);
+  }
+
+  75%{
+    transform:
+      rotate(-9deg)
+      scale(.96);
+  }
+
+  100%{
+    transform:
+      rotate(0)
+      scale(1);
+  }
+
+}
+
+@keyframes angry-shake{
+
+  0%{
+    transform:
+      translate(0,0)
+      rotate(0)
+      scale(1);
+  }
+
+  20%{
+    transform:
+      translate(-9px,2px)
+      rotate(-7deg)
+      scale(.94);
+  }
+
+  40%{
+    transform:
+      translate(9px,-2px)
+      rotate(7deg)
+      scale(.91);
+  }
+
+  60%{
+    transform:
+      translate(-7px,2px)
+      rotate(-6deg)
+      scale(.93);
+  }
+
+  80%{
+    transform:
+      translate(6px,-1px)
+      rotate(5deg)
+      scale(.96);
+  }
+
+  100%{
+    transform:
+      translate(0,0)
+      rotate(0)
+      scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   GONE
+===================================================== */
+
+#pappadam-group.gone{
+
+  opacity:0;
+
+  transform:scale(.3);
+
+  transition:
+
+    opacity .3s,
+
+    transform .3s;
+
+}
+
+
+/* =====================================================
+   SHARDS
+===================================================== */
+
+.shard-layer{
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:3;
+
+}
+
+.shard{
+
+  position:absolute;
+
+  left:50%;
+
+  top:51%;
+
+  width:16px;
+
+  height:16px;
+
+  transform:
+    translate(-50%,-50%);
+
+  transition:
+
+    transform .85s,
+
+    opacity .85s;
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.result-message{
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:24px;
+
+  font-weight:700;
+
+  color:var(--vermillion);
+
+  opacity:0;
+
+  transition:.4s;
+
+  margin:0;
+
+}
+
+.result-message.show{
+
+  opacity:1;
+
+}
+
+.stat-row{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:6px;
+
+  opacity:0;
+
+  transition:.4s;
+
+}
+
+.stat-row.show{
+
+  opacity:1;
+
+}
+
+.stat-chip{
+
+  background:#fff8e6;
+
+  border:
+    1.5px solid
+    var(--pappadam-spot);
+
+  padding:5px 9px;
+
+  border-radius:999px;
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-size:11px;
+
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.action-row{
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:7px;
+
+}
+
+.serve-again,
+.cert-btn{
+
+  border:none;
+
+  cursor:pointer;
+
+  font-family:'Baloo 2',sans-serif;
+
+  font-weight:700;
+
+  padding:9px 18px;
+
+  border-radius:999px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+}
+
+.serve-again.show,
+.cert-btn.show{
+
+  opacity:1;
+
+  pointer-events:auto;
+
+}
+
+.serve-again{
+
+  background:var(--gold);
+
+  box-shadow:
+    0 4px 0 #a9782c;
+
+}
+
+.cert-btn{
+
+  background:var(--leaf-dark);
+
+  color:white;
+
+  box-shadow:
+    0 4px 0 #1e3a24;
+
+}
+
+
+/* =====================================================
+   CERTIFICATE
+===================================================== */
+
+#cert-overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:50;
+
+  background:
+    rgba(42,28,18,.55);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.3s;
+
+}
+
+#cert-overlay.show{
+
+  opacity:1;
+
+  pointer-events:auto;
+
+}
+
+.cert-card{
+
+  background:#fffaf0;
+
+  border:
+    3px solid
+    var(--gold);
+
+  border-radius:18px;
+
+  max-width:440px;
+
+  width:90%;
+
+  padding:25px;
+
+  text-align:center;
+
+  box-shadow:
+
+    0 20px 40px
+    rgba(0,0,0,.3);
+
+}
+
+.cert-close{
+
+  float:right;
+
+  background:none;
+
+  border:none;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+}
+
+.cert-eyebrow{
+
+  color:var(--vermillion);
+
+  font-family:'Baloo 2';
+
+  font-weight:700;
+
+}
+
+.cert-title{
+
+  color:var(--leaf-dark);
+
+  font-family:'Baloo 2';
+
+}
+
+.cert-rank{
+
+  color:var(--vermillion);
+
+  font-family:'Baloo 2';
+
+  font-size:20px;
+
+  font-weight:700;
+
+}
+
+.cert-mode{
+
+  color:var(--leaf-dark);
+
+  font-family:'Baloo 2';
+
+  font-weight:700;
+
+}
+
+.cert-stats{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:8px;
+
+}
+
+.cert-stat{
+
+  background:var(--cream-2);
+
+  padding:9px;
+
+  border-radius:10px;
+
+}
+
+.cert-stat .num{
+
+  display:block;
+
+  font-family:'Baloo 2';
+
+  font-weight:700;
+
+  color:var(--leaf-dark);
+
+}
+
+.cert-stat .lbl{
+
+  font-size:10px;
+
+  color:#7a6248;
+
+}
+
+.cert-footer{
+
+  font-size:11px;
+
+  color:#a08256;
+
+  margin-top:12px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .leaf-stage{
+
+    height:52vh;
+
+  }
+
+  .crush-stage{
+
+    height:42vh;
+
+  }
+
+  .crush-options{
+
+    max-width:370px;
+
+  }
+
+  .crush-option{
+
+    font-size:12px;
+
+    padding:6px 10px;
+
+  }
+
+  .stat-chip{
+
+    font-size:10px;
+
+  }
+
+  .action-row{
+
+    transform:scale(.92);
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PAGE 1 - INTRO
+===================================================== -->
+
+<section
+  id="screen-intro"
+  class="screen active"
+>
+
+  <p class="eyebrow">
+    Pappadam Crush-o-Matic 3000
+  </p>
+
+
+  <div class="intro-leaf">
+
+    <svg viewBox="0 0 400 300">
+
+      <!-- LEAF -->
+
+      <path
+        d="
+          M20,150
+          C55,55 345,55 380,150
+          C345,245 55,245 20,150
+          Z
+        "
+        fill="#5B8C4A"
+      />
+
+      <path
+        d="
+          M22,150
+          C56,60 344,60 378,150
+          C344,240 56,240 22,150
+          Z
+        "
+        fill="#6FA75A"
+        opacity=".6"
+      />
+
+
+      <!-- RICE -->
+
+      <ellipse
+        cx="150"
+        cy="152"
+        rx="58"
+        ry="36"
+        fill="#FFFCF3"
+      />
+
+      <ellipse
+        cx="150"
+        cy="140"
+        rx="46"
+        ry="20"
+        fill="#FFFFFA"
+      />
+
+
+      <!-- PAYASAM -->
+
+      <circle
+        cx="88"
+        cy="108"
+        r="22"
+        fill="#EFD9A0"
+        stroke="#B98A44"
+        stroke-width="2"
+      />
+
+
+      <!-- CURRY -->
+
+      <ellipse
+        cx="235"
+        cy="102"
+        rx="27"
+        ry="19"
+        fill="#C2622B"
+      />
+
+
+      <!-- THORAN -->
+
+      <ellipse
+        cx="238"
+        cy="188"
+        rx="25"
+        ry="17"
+        fill="#6B8E3D"
+      />
+
+
+      <!-- PICKLE -->
+
+      <circle
+        cx="288"
+        cy="150"
+        r="13"
+        fill="#8B2A22"
+      />
+
+
+      <!-- PAPPADAM -->
+
+      <g class="pappadam-idle">
+
+        <circle
+          cx="320"
+          cy="210"
+          r="46"
+          fill="#E8C878"
+          stroke="#A97A34"
+          stroke-width="2.5"
+        />
+
+        <circle
+          cx="320"
+          cy="210"
+          r="46"
+          fill="none"
+          stroke="#C79A4B"
+          stroke-width="1"
+          stroke-dasharray="3 5"
+        />
+
+        <ellipse
+          cx="306"
+          cy="198"
+          rx="4"
+          ry="2.5"
+          fill="#A97A34"
+        />
+
+        <ellipse
+          cx="330"
+          cy="205"
+          rx="3.5"
+          ry="2"
+          fill="#A97A34"
+        />
+
+        <ellipse
+          cx="315"
+          cy="222"
+          rx="3"
+          ry="2"
+          fill="#A97A34"
+        />
+
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <h1 class="headline">
+    The sadya is laid out.
+  </h1>
+
+
+  <p class="tagline">
+    But wait... we forgot something.
+  </p>
+
+
+  <p class="subhead">
+
+    Let's serve the sadya properly first.
+    You decide what goes on the banana leaf.
+
+  </p>
+
+
+  <button
+    class="main-btn"
+    id="start-sadya"
+  >
+
+    Start the Sadya 🍃
+
+  </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 2 - SADYA
+===================================================== -->
+
+<section
+  id="screen-sadya"
+  class="screen"
+>
+
+  <h1 class="sadya-title">
+    🍃 Serving the Sadya
+  </h1>
+
+  <p class="sadya-subtitle">
+    One question at a time...
+  </p>
+
+
+  <div
+    class="question"
+    id="question"
+  >
+    Choru idatte?
+  </div>
+
+
+  <div class="leaf-stage">
+
+    <svg
+      id="sadya-svg"
+      viewBox="0 0 600 430"
+    >
+
+
+      <defs>
+
+        <!--
+          EVERYTHING INSIDE THIS CLIP
+          WILL STAY INSIDE THE BANANA LEAF
+        -->
+
+        <clipPath id="leafClip">
+
+          <path
+            d="
+              M30 215
+              C80 55 520 55 570 215
+              C520 375 80 375 30 215
+              Z
+            "
+          />
+
+        </clipPath>
+
+      </defs>
+
+
+      <!-- =================================================
+           BANANA LEAF
+      ================================================= -->
+
+      <path
+        d="
+          M30 215
+          C80 55 520 55 570 215
+          C520 375 80 375 30 215
+          Z
+        "
+        fill="#5B8C4A"
+      />
+
+
+      <path
+        d="
+          M38 215
+          C90 70 510 70 562 215
+          C510 360 90 360 38 215
+          Z
+        "
+        fill="#6FA75A"
+        opacity=".55"
+      />
+
+
+      <path
+        d="
+          M45 215
+          L555 215
+        "
+        stroke="#3F6B37"
+        stroke-width="3"
+        opacity=".4"
+      />
+
+
+      <!-- =================================================
+           FOOD INSIDE LEAF
+      ================================================= -->
+
+      <g clip-path="url(#leafClip)">
+
+
+        <!-- =================================================
+             RICE
+        ================================================= -->
+
+        <g
+          id="food-rice"
+          class="food"
+        >
+
+          <ellipse
+            cx="300"
+            cy="225"
+            rx="100"
+            ry="58"
+            fill="#FFFCF3"
+          />
+
+          <ellipse
+            cx="300"
+            cy="207"
+            rx="78"
+            ry="36"
+            fill="#FFFFFA"
+          />
+
+          <circle
+            cx="275"
+            cy="202"
+            r="4"
+            fill="#F3D98A"
+          />
+
+          <circle
+            cx="320"
+            cy="214"
+            r="3"
+            fill="#F3D98A"
+          />
+
+          <circle
+            cx="300"
+            cy="190"
+            r="3"
+            fill="#F3D98A"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             PARIPPU
+        ================================================= -->
+
+        <g
+          id="food-parippu"
+          class="food"
+        >
+
+          <ellipse
+            cx="145"
+            cy="120"
+            rx="42"
+            ry="27"
+            fill="#E5B84F"
+          />
+
+          <ellipse
+            cx="145"
+            cy="114"
+            rx="30"
+            ry="13"
+            fill="#F2D276"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             SAMBAR
+        ================================================= -->
+
+        <g
+          id="food-sambar"
+          class="food"
+        >
+
+          <ellipse
+            cx="455"
+            cy="120"
+            rx="45"
+            ry="30"
+            fill="#C2622B"
+          />
+
+          <ellipse
+            cx="455"
+            cy="113"
+            rx="32"
+            ry="14"
+            fill="#D97840"
+          />
+
+          <circle
+            cx="443"
+            cy="110"
+            r="3"
+            fill="#7a3a15"
+          />
+
+          <circle
+            cx="465"
+            cy="120"
+            r="3"
+            fill="#7a3a15"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             OLAN
+        ================================================= -->
+
+        <g
+          id="food-olan"
+          class="food"
+        >
+
+          <ellipse
+            cx="100"
+            cy="190"
+            rx="40"
+            ry="25"
+            fill="#EEE2B8"
+          />
+
+          <ellipse
+            cx="100"
+            cy="184"
+            rx="30"
+            ry="12"
+            fill="#FFF8DC"
+          />
+
+          <circle
+            cx="90"
+            cy="184"
+            r="5"
+            fill="#D6A55B"
+          />
+
+          <circle
+            cx="112"
+            cy="190"
+            r="5"
+            fill="#D6A55B"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             KALAN
+        ================================================= -->
+
+        <g
+          id="food-kalan"
+          class="food"
+        >
+
+          <ellipse
+            cx="500"
+            cy="190"
+            rx="40"
+            ry="25"
+            fill="#F0E5B6"
+          />
+
+          <ellipse
+            cx="500"
+            cy="184"
+            rx="30"
+            ry="12"
+            fill="#FFF7D8"
+          />
+
+          <circle
+            cx="490"
+            cy="182"
+            r="4"
+            fill="#D9B45A"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             AVIAL
+        ================================================= -->
+
+        <g
+          id="food-avial"
+          class="food"
+        >
+
+          <ellipse
+            cx="145"
+            cy="290"
+            rx="48"
+            ry="28"
+            fill="#F0E5B6"
+          />
+
+          <ellipse
+            cx="145"
+            cy="283"
+            rx="35"
+            ry="15"
+            fill="#FFF5D0"
+          />
+
+          <circle
+            cx="130"
+            cy="283"
+            r="4"
+            fill="#8FBB6E"
+          />
+
+          <circle
+            cx="150"
+            cy="290"
+            r="4"
+            fill="#6B8E3D"
+          />
+
+          <circle
+            cx="165"
+            cy="280"
+            r="4"
+            fill="#8FBB6E"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             THORAN
+        ================================================= -->
+
+        <g
+          id="food-thoran"
+          class="food"
+        >
+
+          <ellipse
+            cx="455"
+            cy="290"
+            rx="48"
+            ry="28"
+            fill="#6B8E3D"
+          />
+
+          <circle
+            cx="435"
+            cy="283"
+            r="4"
+            fill="#FFFCF3"
+          />
+
+          <circle
+            cx="455"
+            cy="293"
+            r="4"
+            fill="#FFFCF3"
+          />
+
+          <circle
+            cx="470"
+            cy="283"
+            r="4"
+            fill="#FFFCF3"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             PICKLE
+        ================================================= -->
+
+        <g
+          id="food-pickle"
+          class="food"
+        >
+
+          <circle
+            cx="75"
+            cy="260"
+            r="19"
+            fill="#8B2A22"
+          />
+
+          <circle
+            cx="75"
+            cy="260"
+            r="19"
+            fill="none"
+            stroke="#5e150f"
+            stroke-width="2"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             PACHADI
+        ================================================= -->
+
+        <g
+          id="food-pachadi"
+          class="food"
+        >
+
+          <circle
+            cx="210"
+            cy="340"
+            r="27"
+            fill="#E7B8C8"
+          />
+
+          <ellipse
+            cx="210"
+            cy="334"
+            rx="19"
+            ry="9"
+            fill="#F7DDE5"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             KICHADI
+        ================================================= -->
+
+        <g
+          id="food-kichadi"
+          class="food"
+        >
+
+          <circle
+            cx="390"
+            cy="340"
+            r="27"
+            fill="#E6D48A"
+          />
+
+          <ellipse
+            cx="390"
+            cy="334"
+            rx="19"
+            ry="9"
+            fill="#FFF3C4"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             BANANA
+        ================================================= -->
+
+        <g
+          id="food-banana"
+          class="food"
+        >
+
+          <path
+            d="
+              M500 335
+              C470 320
+              470 295
+              500 285
+              C485 310
+              495 325
+              525 330
+              C518 340
+              507 342
+              500 335
+              Z
+            "
+            fill="#E8C33D"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             PAYASAM
+        ================================================= -->
+
+        <g
+          id="food-payasam"
+          class="food"
+        >
+
+          <ellipse
+            cx="300"
+            cy="350"
+            rx="48"
+            ry="25"
+            fill="#EFD9A0"
+            stroke="#B98A44"
+            stroke-width="2"
+          />
+
+          <ellipse
+            cx="300"
+            cy="343"
+            rx="35"
+            ry="12"
+            fill="#DDA441"
+          />
+
+          <circle
+            cx="315"
+            cy="340"
+            r="3"
+            fill="#B4432E"
+          />
+
+        </g>
+
+
+        <!-- =================================================
+             PAPPADAM
+             DIRECTLY ON TOP OF RICE
+        ================================================= -->
+
+        <g
+          id="food-pappadam"
+          class="food"
+        >
+
+          <ellipse
+            cx="300"
+            cy="190"
+            rx="47"
+            ry="17"
+            fill="rgba(58,36,24,.15)"
+          />
+
+          <circle
+            cx="300"
+            cy="190"
+            r="40"
+            fill="#E8C878"
+            stroke="#A97A34"
+            stroke-width="2.5"
+          />
+
+          <circle
+            cx="300"
+            cy="190"
+            r="40"
+            fill="none"
+            stroke="#C79A4B"
+            stroke-width="1"
+            stroke-dasharray="3 5"
+          />
+
+          <ellipse
+            cx="286"
+            cy="178"
+            rx="4"
+            ry="2.5"
+            fill="#A97A34"
+          />
+
+          <ellipse
+            cx="315"
+            cy="183"
+            rx="3.5"
+            ry="2"
+            fill="#A97A34"
+          />
+
+          <ellipse
+            cx="300"
+            cy="201"
+            rx="3"
+            ry="2"
+            fill="#A97A34"
+          />
+
+          <ellipse
+            cx="320"
+            cy="198"
+            rx="3"
+            ry="2"
+            fill="#A97A34"
+          />
+
+        </g>
+
+
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <p
+    class="serve-status"
+    id="serve-status"
+  >
+    Choose carefully 😌
+  </p>
+
+
+  <div class="choice-row">
+
+    <button
+      class="choice-btn yes-btn"
+      id="yes-btn"
+    >
+      Yes 😋
+    </button>
+
+    <button
+      class="choice-btn no-btn"
+      id="no-btn"
+    >
+      No 😶
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 3 - CRUSH
+===================================================== -->
+
+<section
+  id="screen-crush"
+  class="screen"
+>
+
+
+  <div class="crush-topbar">
+
+    <button
+      class="back-link"
+      id="back-to-sadya"
+    >
+      ‹ Back to sadya
+    </button>
+
+
+    <div class="top-right">
+
+      <span
+        class="counter-pill"
+        id="counter-pill"
+      >
+        Pappadams crushed: 0
+      </span>
+
+
+      <button
+        class="sound-toggle"
+        id="sound-toggle"
+      >
+        🔊
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <h1 class="crush-title">
+    💥 Pappadam Crushing Zone
+  </h1>
+
+
+  <p class="crush-subtitle">
+    Choose your style of destruction.
+  </p>
+
+
+  <p
+    class="crush-instruction"
+    id="crush-instruction"
+  >
+    Tap gently... 😌
+  </p>
+
+
+  <!-- ===================================================
+       CRUSHING OPTIONS
+  =================================================== -->
+
+  <div
+    class="crush-options"
+    id="crush-options"
+  >
+
+    <button
+      class="crush-option active"
+      data-mode="tap"
+    >
+      👆 Gentle Tap
+    </button>
+
+
+    <button
+      class="crush-option"
+      data-mode="hard"
+    >
+      ✊ Hard Crush
+    </button>
+
+
+    <button
+      class="crush-option"
+      data-mode="twist"
+    >
+      🌀 Twist & Crush
+    </button>
+
+
+    <button
+      class="crush-option"
+      data-mode="full"
+    >
+      💥 Full Podichu
+    </button>
+
+
+    <button
+      class="crush-option"
+      data-mode="angry"
+    >
+      😈 Angry Crush
+    </button>
+
+  </div>
+
+
+  <!-- ===================================================
+       CRUSHING STAGE
+  =================================================== -->
+
+  <div class="crush-stage">
+
+    <svg
+      id="scene-svg"
+      viewBox="0 0 400 400"
+    >
+
+
+      <!-- BANANA LEAF -->
+
+      <path
+        d="
+          M30,200
+          C70,72 330,72 370,200
+          C330,328 70,328 30,200
+          Z
+        "
+        fill="#5B8C4A"
+      />
+
+
+      <path
+        d="
+          M34,200
+          C72,80 328,80 366,200
+          C328,320 72,320 34,200
+          Z
+        "
+        fill="#6FA75A"
+        opacity=".55"
+      />
+
+
+      <!-- LEAF VEIN -->
+
+      <path
+        d="M45 200 L355 200"
+        stroke="#3F6B37"
+        stroke-width="3"
+        opacity=".4"
+      />
+
+
+      <!-- RICE -->
+
+      <g>
+
+        <ellipse
+          cx="200"
+          cy="235"
+          rx="92"
+          ry="52"
+          fill="#FFFCF3"
+        />
+
+        <ellipse
+          cx="200"
+          cy="220"
+          rx="70"
+          ry="30"
+          fill="#FFFFFA"
+        />
+
+        <circle
+          cx="180"
+          cy="215"
+          r="4"
+          fill="#F3D98A"
+        />
+
+        <circle
+          cx="222"
+          cy="220"
+          r="3"
+          fill="#F3D98A"
+        />
+
+        <circle
+          cx="200"
+          cy="205"
+          r="3"
+          fill="#F3D98A"
+        />
+
+      </g>
+
+
+      <!-- SMALL CURRIES AROUND RICE -->
+
+      <ellipse
+        cx="105"
+        cy="210"
+        rx="28"
+        ry="18"
+        fill="#C2622B"
+        opacity=".9"
+      />
+
+      <ellipse
+        cx="295"
+        cy="210"
+        rx="28"
+        ry="18"
+        fill="#6B8E3D"
+        opacity=".9"
+      />
+
+
+      <!-- PAPPADAM -->
+
+      <g id="pappadam-group"></g>
+
+
+    </svg>
+
+
+    <div
+      class="shard-layer"
+      id="shard-layer"
+    ></div>
+
+  </div>
+
+
+  <!-- RESULT -->
+
+  <p
+    class="result-message"
+    id="result-message"
+  ></p>
+
+
+  <div
+    class="stat-row"
+    id="stat-row"
+  ></div>
+
+
+  <div class="action-row">
+
+    <button
+      class="serve-again"
+      id="serve-again"
+    >
+      Serve another
+    </button>
+
+
+    <button
+      class="cert-btn"
+      id="cert-btn"
+    >
+      Get certificate
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CERTIFICATE
+===================================================== -->
+
+<div id="cert-overlay">
+
+  <div class="cert-card">
+
+    <button
+      class="cert-close"
+      id="cert-close"
+    >
+      ✕
+    </button>
+
+
+    <p class="cert-eyebrow">
+      Certificate of Pappadam Crushing
+    </p>
+
+
+    <h2 class="cert-title">
+      This hereby confirms that
+    </h2>
+
+
+    <p>
+
+      a pappadam was crushed over rice
+      with great enthusiasm,
+      in full accordance with sadya tradition,
+      for absolutely no practical reason.
+
+    </p>
+
+
+    <p
+      class="cert-rank"
+      id="cert-rank"
+    >
+      Padi Beginner
+    </p>
+
+
+    <p
+      class="cert-mode"
+      id="cert-mode"
+    >
+      Crushing style: Gentle Tap
+    </p>
+
+
+    <div class="cert-stats">
+
+
+      <div class="cert-stat">
+
+        <span
+          class="num"
+          id="cert-count"
+        >
+          0
+        </span>
+
+        <span class="lbl">
+          pappadams crushed
+        </span>
+
+      </div>
+
+
+      <div class="cert-stat">
+
+        <span
+          class="num"
+          id="cert-decibel"
+        >
+          0 dB
+        </span>
+
+        <span class="lbl">
+          crunch
+        </span>
+
+      </div>
+
+
+      <div class="cert-stat">
+
+        <span
+          class="num"
+          id="cert-iq"
+        >
+          0
+        </span>
+
+        <span class="lbl">
+          pappadam IQ
+        </span>
+
+      </div>
+
+
+      <div class="cert-stat">
+
+        <span
+          class="num"
+          id="cert-crumbs"
+        >
+          0
+        </span>
+
+        <span class="lbl">
+          crumbs launched
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <p class="cert-footer">
+
+      An official Useless Projects,
+      Tinkerhub invention.
+
+      No pappadams were harmed on purpose.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     OPTIONAL SOUND
+     
+     If you have an MP3 file, put it inside:
+     
+     sounds/pappadam-podichu.mp3
+     
+     Then uncomment this:
+===================================================== -->
+
+<!--
+
+<audio id="pappadamSound">
+
+  <source
+    src="sounds/pappadam-podichu.mp3"
+    type="audio/mpeg"
+  >
+
+</audio>
+
+-->
+
+
+
+<script>
+
+(function(){
+
+
+/* =====================================================
+   SCREEN NAVIGATION
+===================================================== */
+
+const introScreen =
+  document.getElementById(
+    "screen-intro"
+  );
+
+const sadyaScreen =
+  document.getElementById(
+    "screen-sadya"
+  );
+
+const crushScreen =
+  document.getElementById(
+    "screen-crush"
+  );
+
+
+function showScreen(screen){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(s =>
+      s.classList.remove("active")
+    );
+
+  screen.classList.add("active");
+
+}
+
+
+/* =====================================================
+   START SADYA
+===================================================== */
+
+document
+  .getElementById("start-sadya")
+  .addEventListener("click",()=>{
+
+    showScreen(sadyaScreen);
+
+    startSadya();
+
+  });
+
+
+/* =====================================================
+   BACK TO SADYA
+===================================================== */
+
+document
+  .getElementById("back-to-sadya")
+  .addEventListener("click",()=>{
+
+    showScreen(sadyaScreen);
+
+  });
+
+
+
+/* =====================================================
+   SADYA ITEMS
+===================================================== */
+
+const sadyaItems = [
+
+  {
+    question:"Choru idatte?",
+    food:"food-rice",
+    message:"Choru vannu! 🍚"
+  },
+
+  {
+    question:"Parippu idatte?",
+    food:"food-parippu",
+    message:"Parippu ready! 🥣"
+  },
+
+  {
+    question:"Sambar idatte?",
+    food:"food-sambar",
+    message:"Sambar ozhichu! 🍲"
+  },
+
+  {
+    question:"Olan idatte?",
+    food:"food-olan",
+    message:"Olanum ready! 🥥"
+  },
+
+  {
+    question:"Kalan idatte?",
+    food:"food-kalan",
+    message:"Kalan served! 😋"
+  },
+
+  {
+    question:"Avial idatte?",
+    food:"food-avial",
+    message:"Avialum vannu! 🥕"
+  },
+
+  {
+    question:"Thoran idatte?",
+    food:"food-thoran",
+    message:"Thoran set! 🥬"
+  },
+
+  {
+    question:"Achaar idatte?",
+    food:"food-pickle",
+    message:"Achaarum venam alle! 🌶️"
+  },
+
+  {
+    question:"Pachadi idatte?",
+    food:"food-pachadi",
+    message:"Pachadi vannu! 💗"
+  },
+
+  {
+    question:"Kichadi idatte?",
+    food:"food-kichadi",
+    message:"Kichadi ready! 🥒"
+  },
+
+  {
+    question:"Pazham idatte?",
+    food:"food-banana",
+    message:"Pazham ready! 🍌"
+  },
+
+  {
+    question:"Payasam idatte?",
+    food:"food-payasam",
+    message:"Payasam kazhikkam! 🥛"
+  }
+
+];
+
+
+let currentItem = 0;
+
+
+/* =====================================================
+   START SADYA
+===================================================== */
+
+function startSadya(){
+
+  currentItem = 0;
+
+
+  document
+    .querySelectorAll(".food")
+    .forEach(food => {
+
+      food.classList.remove(
+        "visible"
+      );
+
+    });
+
+
+  document
+    .getElementById("yes-btn")
+    .style.display =
+      "block";
+
+
+  document
+    .getElementById("no-btn")
+    .style.display =
+      "block";
+
+
+  const oldContinue =
+    document.getElementById(
+      "continue-crush"
+    );
+
+  if(oldContinue){
+    oldContinue.remove();
+  }
+
+
+  showQuestion();
+
+}
+
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
+
+function showQuestion(){
+
+  const item =
+    sadyaItems[currentItem];
+
+
+  document
+    .getElementById("question")
+    .textContent =
+      item.question;
+
+
+  document
+    .getElementById("serve-status")
+    .textContent =
+      "Choose carefully 😌";
+
+}
+
+
+/* =====================================================
+   YES
+===================================================== */
+
+document
+  .getElementById("yes-btn")
+  .addEventListener("click",()=>{
+
+    const item =
+      sadyaItems[currentItem];
+
+
+    const food =
+      document.getElementById(
+        item.food
+      );
+
+
+    food.classList.add(
+      "visible"
+    );
+
+
+    document
+      .getElementById("serve-status")
+      .textContent =
+        item.message;
+
+
+    setTimeout(()=>{
+
+      nextSadyaItem();
+
+    },600);
+
+  });
+
+
+/* =====================================================
+   NO
+===================================================== */
+
+document
+  .getElementById("no-btn")
+  .addEventListener("click",()=>{
+
+    document
+      .getElementById("serve-status")
+      .textContent =
+        "Sheri... skipping this one 😶";
+
+
+    setTimeout(()=>{
+
+      nextSadyaItem();
+
+    },500);
+
+  });
+
+
+/* =====================================================
+   NEXT SADYA ITEM
+===================================================== */
+
+function nextSadyaItem(){
+
+  currentItem++;
+
+
+  if(
+    currentItem >=
+    sadyaItems.length
+  ){
+
+    showPappadamQuestion();
+
+    return;
+
+  }
+
+
+  showQuestion();
+
+}
+
+
+/* =====================================================
+   PAPPADAM MOMENT
+===================================================== */
+
+function showPappadamQuestion(){
+
+  document
+    .getElementById("question")
+    .textContent =
+      "Pappadam pinne venallo 😌";
+
+
+  document
+    .getElementById("serve-status")
+    .textContent =
+      "Obviously! Pappadam illathe sadya enthu sadya? 😂";
+
+
+  document
+    .getElementById("yes-btn")
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById("no-btn")
+    .style.display =
+      "none";
+
+
+  /* PAPPADAM APPEARS ON RICE */
+
+  document
+    .getElementById("food-pappadam")
+    .classList.add(
+      "visible"
+    );
+
+
+  const choiceRow =
+    document.querySelector(
+      ".choice-row"
+    );
+
+
+  const oldContinue =
+    document.getElementById(
+      "continue-crush"
+    );
+
+
+  if(oldContinue){
+    oldContinue.remove();
+  }
+
+
+  const continueButton =
+    document.createElement(
+      "button"
+    );
+
+
+  continueButton.id =
+    "continue-crush";
+
+  continueButton.className =
+    "main-btn";
+
+  continueButton.textContent =
+    "Now let's crush it! 💥";
+
+
+  continueButton.style.marginTop =
+    "8px";
+
+
+  choiceRow.appendChild(
+    continueButton
+  );
+
+
+  continueButton.addEventListener(
+    "click",
+    ()=>{
+
+      showScreen(
+        crushScreen
+      );
+
+      resetPappadam();
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   SOUND
+===================================================== */
+
+let soundOn = true;
+
+
+const soundBtn =
+  document.getElementById(
+    "sound-toggle"
+  );
+
+
+soundBtn.addEventListener(
+  "click",
+  ()=>{
+
+    soundOn = !soundOn;
+
+    soundBtn.textContent =
+      soundOn
+        ? "🔊"
+        : "🔇";
+
+  }
+);
+
+
+function playCrunch(big){
+
+  if(!soundOn){
+    return;
+  }
+
+
+  const customSound =
+    document.getElementById(
+      "pappadamSound"
+    );
+
+
+  if(customSound){
+
+    customSound.currentTime = 0;
+
+    customSound.play()
+      .catch(()=>{
+        console.log(
+          "Custom audio could not play."
+        );
+      });
+
+  }
+
+}
+
+
+
+/* =====================================================
+   CRUSHING MODES
+===================================================== */
+
+let selectedCrushMode =
+  "tap";
+
+
+const crushModes = {
+
+
+  tap:{
+
+    name:"Gentle Tap",
+
+    taps:5,
+
+    instruction:
+      "Tap gently... 😌",
+
+    message:
+      "Soft but satisfying! 😌",
+
+    baseDb:70,
+
+    crumbsMin:10,
+
+    crumbsMax:17
+
+  },
+
+
+  hard:{
+
+    name:"Hard Crush",
+
+    taps:3,
+
+    instruction:
+      "Hit it HARD! ✊",
+
+    message:
+      "Ayyoo! That pappadam didn't stand a chance! 💥",
+
+    baseDb:95,
+
+    crumbsMin:15,
+
+    crumbsMax:24
+
+  },
+
+
+  twist:{
+
+    name:"Twist & Crush",
+
+    taps:7,
+
+    instruction:
+      "Keep twisting and crushing! 🌀",
+
+    message:
+      "Twisted into submission! 🌀😂",
+
+    baseDb:80,
+
+    crumbsMin:18,
+
+    crumbsMax:28
+
+  },
+
+
+  full:{
+
+    name:"Full Podichu",
+
+    taps:1,
+
+    instruction:
+      "ONE BIG CRUSH! 💥",
+
+    message:
+      "PAPPADAM PODICHU! 🔥😂",
+
+    baseDb:115,
+
+    crumbsMin:25,
+
+    crumbsMax:35
+
+  },
+
+
+  angry:{
+
+    name:"Angry Crush",
+
+    taps:2,
+
+    instruction:
+      "Release your inner pappadam rage! 😈",
+
+    message:
+      "Certified Pappadam Destroyer! 😈💥",
+
+    baseDb:105,
+
+    crumbsMin:22,
+
+    crumbsMax:32
+
+  }
+
+};
+
+
+
+/* =====================================================
+   SELECT CRUSHING MODE
+===================================================== */
+
+document
+  .querySelectorAll(".crush-option")
+  .forEach(button => {
+
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+
+        if(
+          button.classList.contains(
+            "disabled"
+          )
+        ){
+          return;
+        }
+
+
+        selectedCrushMode =
+          button.dataset.mode;
+
+
+        document
+          .querySelectorAll(
+            ".crush-option"
+          )
+          .forEach(btn =>
+            btn.classList.remove(
+              "active"
+            )
+          );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        const mode =
+          crushModes[
+            selectedCrushMode
+          ];
+
+
+        document
+          .getElementById(
+            "crush-instruction"
+          )
+          .textContent =
+            mode.instruction;
+
+
+        resetPappadam();
+
+      }
+
+    );
+
+  });
+
+
+
+/* =====================================================
+   PAPPADAM VARIABLES
+===================================================== */
+
+const NS =
+  "http://www.w3.org/2000/svg";
+
+
+const cx = 200;
+
+const cy = 175;
+
+const baseR = 70;
+
+
+let crackCount = 0;
+
+let totalCrushed = 0;
+
+let lastCrumbCount = 0;
+
+let crushingFinished = false;
+
+
+
+/* =====================================================
+   BUILD PAPPADAM
+===================================================== */
+
+function buildPappadam(){
+
+
+  const group =
+    document.getElementById(
+      "pappadam-group"
+    );
+
+
+  group.innerHTML = "";
+
+
+  group.classList.remove(
+    "gone"
+  );
+
+
+  group.classList.remove(
+    "mode-tap",
+    "mode-hard",
+    "mode-twist",
+    "mode-full",
+    "mode-angry"
+  );
+
+
+  group.classList.add(
+    "mode-" +
+    selectedCrushMode
+  );
+
+
+  crackCount = 0;
+
+  crushingFinished = false;
+
+
+  /* ==========================================
+     MAIN PAPPADAM
+  ========================================== */
+
+  const disc =
+    document.createElementNS(
+      NS,
+      "circle"
+    );
+
+
+  disc.setAttribute(
+    "cx",
+    cx
+  );
+
+  disc.setAttribute(
+    "cy",
+    cy
+  );
+
+  disc.setAttribute(
+    "r",
+    baseR
+  );
+
+  disc.setAttribute(
+    "fill",
+    "#E8C878"
+  );
+
+  disc.setAttribute(
+    "stroke",
+    "#A97A34"
+  );
+
+  disc.setAttribute(
+    "stroke-width",
+    "3"
+  );
+
+
+  group.appendChild(
+    disc
+  );
+
+
+  /* ==========================================
+     INNER TOASTED EDGE
+  ========================================== */
+
+  const innerRing =
+    document.createElementNS(
+      NS,
+      "circle"
+    );
+
+
+  innerRing.setAttribute(
+    "cx",
+    cx
+  );
+
+  innerRing.setAttribute(
+    "cy",
+    cy
+  );
+
+  innerRing.setAttribute(
+    "r",
+    baseR - 5
+  );
+
+  innerRing.setAttribute(
+    "fill",
+    "none"
+  );
+
+  innerRing.setAttribute(
+    "stroke",
+    "#C79A4B"
+  );
+
+  innerRing.setAttribute(
+    "stroke-width",
+    "1"
+  );
+
+  innerRing.setAttribute(
+    "stroke-dasharray",
+    "3 5"
+  );
+
+
+  group.appendChild(
+    innerRing
+  );
+
+
+  /* ==========================================
+     PAPPADAM DOTS
+  ========================================== */
+
+  for(
+    let i=0;
+    i<38;
+    i++
+  ){
+
+    const angle =
+      Math.random() *
+      Math.PI *
+      2;
+
+
+    const radius =
+      Math.random() *
+      55;
+
+
+    const x =
+      cx +
+      Math.cos(angle) *
+      radius;
+
+
+    const y =
+      cy +
+      Math.sin(angle) *
+      radius *
+      .9;
+
+
+    const dot =
+      document.createElementNS(
+        NS,
+        "ellipse"
+      );
+
+
+    dot.setAttribute(
+      "cx",
+      x
+    );
+
+    dot.setAttribute(
+      "cy",
+      y
+    );
+
+    dot.setAttribute(
+      "rx",
+      2.5
+    );
+
+    dot.setAttribute(
+      "ry",
+      1.8
+    );
+
+    dot.setAttribute(
+      "fill",
+      "#A97A34"
+    );
+
+    dot.setAttribute(
+      "opacity",
+      ".5"
+    );
+
+
+    group.appendChild(
+      dot
+    );
+
+  }
+
+
+  /* ==========================================
+     CRACKS
+  ========================================== */
+
+  const crackPaths = [
+
+
+    `M200 175
+     L178 135
+     L160 108`,
+
+
+    `M200 175
+     L235 140
+     L270 118`,
+
+
+    `M200 175
+     L170 205
+     L135 230`,
+
+
+    `M200 175
+     L230 210
+     L260 245`,
+
+
+    `M200 175
+     L155 175
+     L120 160`,
+
+
+    `M200 175
+     L245 178
+     L280 160`,
+
+
+    `M200 175
+     L190 130
+     L205 100`,
+
+
+    `M200 175
+     L210 220
+     L200 255`
+
+  ];
+
+
+  crackPaths.forEach(
+    pathData => {
+
+
+      const path =
+        document.createElementNS(
+          NS,
+          "path"
+        );
+
+
+      path.setAttribute(
+        "d",
+        pathData
+      );
+
+
+      path.setAttribute(
+        "fill",
+        "none"
+      );
+
+
+      path.setAttribute(
+        "stroke",
+        "#6b4623"
+      );
+
+
+      path.setAttribute(
+        "stroke-width",
+        "3"
+      );
+
+
+      path.setAttribute(
+        "stroke-linecap",
+        "round"
+      );
+
+
+      path.style.opacity =
+        "0";
+
+
+      path.style.transition =
+        "opacity .2s";
+
+
+      group.appendChild(
+        path
+      );
+
+    }
+
+  );
+
+}
+
+
+
+/* =====================================================
+   SHOW CRACK
+===================================================== */
+
+function revealNextCrack(){
+
+
+  const group =
+    document.getElementById(
+      "pappadam-group"
+    );
+
+
+  const paths =
+    group.querySelectorAll(
+      "path"
+    );
+
+
+  if(
+    crackCount <
+    paths.length
+  ){
+
+    paths[
+      crackCount
+    ].style.opacity =
+      "1";
+
+
+    crackCount++;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SHATTER
+===================================================== */
+
+function shatter(){
+
+
+  if(crushingFinished){
+    return;
+  }
+
+
+  crushingFinished = true;
+
+
+  const group =
+    document.getElementById(
+      "pappadam-group"
+    );
+
+
+  const shardLayer =
+    document.getElementById(
+      "shard-layer"
+    );
+
+
+  group.classList.add(
+    "gone"
+  );
+
+
+  shardLayer.innerHTML =
+    "";
+
+
+  const tones = [
+
+    "#E8C878",
+    "#C79A4B",
+    "#A97A34",
+    "#D9B060"
+
+  ];
+
+
+  const mode =
+    crushModes[
+      selectedCrushMode
+    ];
+
+
+  let shardCount = 30;
+
+
+  if(
+    selectedCrushMode ===
+    "full"
+  ){
+
+    shardCount = 45;
+
+  }
+
+
+  if(
+    selectedCrushMode ===
+    "angry"
+  ){
+
+    shardCount = 40;
+
+  }
+
+
+  /* ==========================================
+     CREATE SHARDS
+  ========================================== */
+
+  for(
+    let i=0;
+    i<shardCount;
+    i++
+  ){
+
+    const shard =
+      document.createElement(
+        "div"
+      );
+
+
+    shard.className =
+      "shard";
+
+
+    const size =
+      7 +
+      Math.random() *
+      15;
+
+
+    shard.style.width =
+      size + "px";
+
+
+    shard.style.height =
+      size + "px";
+
+
+    shard.style.background =
+      tones[
+        Math.floor(
+          Math.random() *
+          tones.length
+        )
+      ];
+
+
+    shard.style.clipPath =
+      `polygon(
+        0 0,
+        100% 20%,
+        70% 100%,
+        10% 70%
+      )`;
+
+
+    shardLayer.appendChild(
+      shard
+    );
+
+
+    const angle =
+      Math.random() *
+      Math.PI *
+      2;
+
+
+    let distance =
+      60 +
+      Math.random() *
+      130;
+
+
+    if(
+      selectedCrushMode ===
+      "full"
+    ){
+
+      distance += 50;
+
+    }
+
+
+    if(
+      selectedCrushMode ===
+      "angry"
+    ){
+
+      distance += 25;
+
+    }
+
+
+    const x =
+      Math.cos(angle) *
+      distance;
+
+
+    const y =
+      Math.sin(angle) *
+      distance;
+
+
+    const rotation =
+      Math.random() *
+      900;
+
+
+    requestAnimationFrame(()=>{
+
+      requestAnimationFrame(()=>{
+
+        shard.style.transform =
+
+          `translate(
+            calc(-50% + ${x}px),
+            calc(-50% + ${y}px)
+          )
+          rotate(${rotation}deg)`;
+
+
+        shard.style.opacity =
+          "0";
+
+      });
+
+    });
+
+  }
+
+
+  /* ==========================================
+     STATS
+  ========================================== */
+
+  totalCrushed++;
+
+
+  lastCrumbCount =
+
+    mode.crumbsMin +
+
+    Math.floor(
+      Math.random() *
+      (
+        mode.crumbsMax -
+        mode.crumbsMin +
+        1
+      )
+    );
+
+
+  const decibel =
+
+    mode.baseDb +
+
+    Math.floor(
+      Math.random() * 25
+    );
+
+
+  const iq =
+
+    40 +
+
+    Math.floor(
+      Math.random() * 120
+    );
+
+
+  document
+    .getElementById(
+      "counter-pill"
+    )
+    .textContent =
+
+      `Pappadams crushed: ${totalCrushed}`;
+
+
+  /* ==========================================
+     MESSAGE
+  ========================================== */
+
+  const messages = [
+
+    mode.message,
+
+    "Adipoli! 🔥",
+
+    "Kollam! 😎",
+
+    "Kidilan! 💥",
+
+    "Sadya complete! 🍃",
+
+    "Pappadam podichu! 😂"
+
+  ];
+
+
+  const message =
+    document.getElementById(
+      "result-message"
+    );
+
+
+  message.textContent =
+
+    messages[
+      Math.floor(
+        Math.random() *
+        messages.length
+      )
+    ];
+
+
+  document
+    .getElementById(
+      "crush-instruction"
+    )
+    .style.opacity =
+      "0";
+
+
+  /* ==========================================
+     STATISTICS
+  ========================================== */
+
+  const statRow =
+    document.getElementById(
+      "stat-row"
+    );
+
+
+  statRow.innerHTML = `
+
+    <span class="stat-chip">
+      ${mode.name}
+    </span>
+
+    <span class="stat-chip">
+      ${decibel} dB of crunch
+    </span>
+
+    <span class="stat-chip">
+      Pappadam IQ: ${iq}
+    </span>
+
+    <span class="stat-chip">
+      ${lastCrumbCount} crumbs launched
+    </span>
+
+  `;
+
+
+  window.__lastStats = {
+
+    decibel,
+
+    iq,
+
+    crumbs:
+      lastCrumbCount,
+
+    mode:
+      mode.name
+
+  };
+
+
+  /* ==========================================
+     SHOW RESULT
+  ========================================== */
+
+  setTimeout(()=>{
+
+    message.classList.add(
+      "show"
+    );
+
+
+    statRow.classList.add(
+      "show"
+    );
+
+
+    document
+      .getElementById(
+        "serve-again"
+      )
+      .classList.add(
+        "show"
+      );
+
+
+    document
+      .getElementById(
+        "cert-btn"
+      )
+      .classList.add(
+        "show"
+      );
+
+
+    document
+      .getElementById(
+        "crush-options"
+      )
+      .classList.add(
+        "disabled"
+      );
+
+  },500);
+
+
+  playCrunch(true);
+
+}
+
+
+
+/* =====================================================
+   TAP / CRUSH
+===================================================== */
+
+function handleTap(){
+
+
+  const group =
+    document.getElementById(
+      "pappadam-group"
+    );
+
+
+  if(
+    group.classList.contains(
+      "gone"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  if(crushingFinished){
+    return;
+  }
+
+
+  const mode =
+    crushModes[
+      selectedCrushMode
+    ];
+
+
+  /* ==========================================
+     SPECIAL FULL PODICHU
+  ========================================== */
+
+  if(
+    selectedCrushMode ===
+    "full"
+  ){
+
+    group.classList.remove(
+      "shake"
+    );
+
+
+    void group.offsetWidth;
+
+
+    group.classList.add(
+      "shake"
+    );
+
+
+    setTimeout(()=>{
+
+      shatter();
+
+    },180);
+
+
+    return;
+
+  }
+
+
+  /* ==========================================
+     ANIMATION
+  ========================================== */
+
+  group.classList.remove(
+    "shake"
+  );
+
+
+  void group.offsetWidth;
+
+
+  group.classList.add(
+    "shake"
+  );
+
+
+  /* ==========================================
+     CRACKS
+  ========================================== */
+
+  if(
+    crackCount <
+    mode.taps - 1
+  ){
+
+    revealNextCrack();
+
+    playCrunch(false);
+
+  }
+
+  else{
+
+    shatter();
+
+  }
+
+}
+
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetPappadam(){
+
+
+  document
+    .getElementById(
+      "result-message"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "stat-row"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "serve-again"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "cert-btn"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "crush-options"
+    )
+    .classList.remove(
+      "disabled"
+    );
+
+
+  const mode =
+    crushModes[
+      selectedCrushMode
+    ];
+
+
+  document
+    .getElementById(
+      "crush-instruction"
+    )
+    .textContent =
+      mode.instruction;
+
+
+  document
+    .getElementById(
+      "crush-instruction"
+    )
+    .style.opacity =
+      "1";
+
+
+  document
+    .getElementById(
+      "shard-layer"
+    )
+    .innerHTML =
+      "";
+
+
+  buildPappadam();
+
+}
+
+
+
+/* =====================================================
+   CLICK PAPPADAM
+===================================================== */
+
+document
+  .getElementById(
+    "scene-svg"
+  )
+  .addEventListener(
+    "click",
+    (e)=>{
+
+
+      if(
+        e.target.closest(
+          "#pappadam-group"
+        )
+      ){
+
+        handleTap();
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================================
+   SERVE AGAIN
+===================================================== */
+
+document
+  .getElementById(
+    "serve-again"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      resetPappadam();
+
+    }
+  );
+
+
+
+/* =====================================================
+   CERTIFICATE
+===================================================== */
+
+const certOverlay =
+  document.getElementById(
+    "cert-overlay"
+  );
+
+
+document
+  .getElementById(
+    "cert-btn"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+
+      const stats =
+        window.__lastStats ||
+        {
+
+          decibel:0,
+
+          iq:0,
+
+          crumbs:0,
+
+          mode:
+            crushModes[
+              selectedCrushMode
+            ].name
+
+        };
+
+
+      document
+        .getElementById(
+          "cert-count"
+        )
+        .textContent =
+          totalCrushed;
+
+
+      document
+        .getElementById(
+          "cert-decibel"
+        )
+        .textContent =
+          stats.decibel +
+          " dB";
+
+
+      document
+        .getElementById(
+          "cert-iq"
+        )
+        .textContent =
+          stats.iq;
+
+
+      document
+        .getElementById(
+          "cert-crumbs"
+        )
+        .textContent =
+          stats.crumbs;
+
+
+      document
+        .getElementById(
+          "cert-mode"
+        )
+        .textContent =
+
+          "Crushing style: " +
+          stats.mode;
+
+
+      /* ==========================================
+         RANK
+      ========================================== */
+
+      const ranks = [
+
+        [
+          1,
+          "Padi Beginner"
+        ],
+
+        [
+          3,
+          "Certified Crumb Lord"
+        ],
+
+        [
+          6,
+          "Sadya Sensei Supreme"
+        ],
+
+        [
+          10,
+          "Grand Master of Useless Crushing"
+        ]
+
+      ];
+
+
+      let rank =
+        "Padi Beginner";
+
+
+      for(
+        const [
+          number,
+          label
+        ]
+        of ranks
+      ){
+
+        if(
+          totalCrushed >=
+          number
+        ){
+
+          rank =
+            label;
+
+        }
+
+      }
+
+
+      document
+        .getElementById(
+          "cert-rank"
+        )
+        .textContent =
+          rank;
+
+
+      certOverlay.classList.add(
+        "show"
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   CLOSE CERTIFICATE
+===================================================== */
+
+document
+  .getElementById(
+    "cert-close"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+
+      certOverlay.classList.remove(
+        "show"
+      );
+
+    }
+  );
+
+
+
+/* =====================================================
+   INITIAL PAPPADAM
+===================================================== */
+
+buildPappadam();
+
+
+})();
+
+</script>
+
+</body>
+
+</html>
