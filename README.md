@@ -2,98 +2,62 @@
 
 
 
-# [Project Name] 🎯
+# SADHYA PAPPADAM CRUSH 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: FAHHH!
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Shilpa Sunder - Model Engineering College,Thrikkakkara
+- Member 2: Parvathy Suresh - Model Engineering College,Thrikkakkara
+
 
 ### Project Description
-[2-3 lines about what your project does]
+SADHYA PAPPADAM CRUSH is a fun, interactive web game inspired by the traditional Kerala SadHya, where users prepare a virtual SadHya and crush pappadam using different crushing modes. It uses HTML, CSS, JavaScript, and SVG to create an entertaining and humorous user experience.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+All malayalis love sadhya, but what they love even more is crushing that crispy pappadam on top of that hot steaming rice. How inconvenient that we can't just do it whenever we feel like.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+The SADHYA PAPPADAM CRUSHER was created to make sure that anyone, at anytime can crush a crispy pappadam on top of their sadhya.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- HTML, JavaScript, CSS
+- No frameworks - vanilla JavaScript
+- Google Fonts
+- Visual Studio Code
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
 For Software:
 # Installation
-[commands]
+None
 
 # Run
-[commands]
+None
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="863" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/7566fcad-1587-44dc-a0ec-71202eb5ff19" />
+Adding items on to sadhya
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="898" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/8fecb624-aef0-4ce6-b7f8-5f7ea7490096" />
+After pappadam crush
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1880" height="890" alt="Screenshot (3)" src="https://github.com/user-attachments/assets/57b9d0fc-8735-49ab-8057-bc8129a138a5" />
+Certificate
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+<img width="1536" height="1024" alt="workflow" src="https://github.com/user-attachments/assets/fbf7dff7-24ec-48a2-9df9-708fb795859d" />
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Shilpa Sunder: Design
+- Parvathy Suresh: coding
 
----
 Made with ❤️ at TinkerHub Useless Projects 
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
